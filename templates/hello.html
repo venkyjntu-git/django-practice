@@ -1,0 +1,28 @@
+{% load static %}
+{% load randommarks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    {% for p in persons %}
+
+    <h1>Hello {{p}} - {{p.age}}</h1>
+
+    {% endfor %}
+    <p>Paragraph-{{number}}</p>
+    <p>ML - marks{% random_int 1 29 %}</p>
+    <form action="{% url 'store_person' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" id="">
+        <input type="number" name="age" id="">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
